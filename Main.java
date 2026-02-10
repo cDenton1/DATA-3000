@@ -1,48 +1,59 @@
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Scanner;
-import javax.swing.JOptionPane;
 
 public class Main {
 
-   public static void main(String[] args) {
-    
-    JOptionPane.showMessageDialog(null, "Employee Data Searching and Searching Program! \n Press OK to start");
+    public static void main(String[] args) {
 
-    // Enter the full fill path for the files
-    Scanner scanner = null;
-    while (scanner == null) {
-            String filePath = JOptionPane.showInputDialog(null, "Enter the full path of employee data file");
+        Employee[] employees = new Employee[1000];
+        int index = 0;
+		
+		// Scanner object to read the file.
+        try (Scanner fileScanner = new Scanner(new File("employeesWithoutRepeat.txt"))) {
 
-    // Declaring the that we have found a file
-    File file = new File(filePath);
+            while (fileScanner.hasNextLine() && index < employees.length) {
+                String line = fileScanner.nextLine();
+                String[] data = line.split(",");
 
-    // Ensuring the path is legitimate, if not it'll shoot a message saying it didn't work and for us to try again.
-    try {
-        scanner = new Scanner(file);
-        JOptionPane.showMessageDialog(null, "Read employee data from file " + filePath);
-    } 
-    catch (Exception e) {
-        JOptionPane.showMessageDialog(null, "Couldn't find path, try again please");
+                int ID = Integer.parseInt(data[0]);
+                String name = data[1];
+                double hoursWorked = Double.parseDouble(data[2]);
+                double hourlyRate = Double.parseDouble(data[3]);
+                double deductionProvince = Double.parseDouble(data[4]);
+                double deductionFederal = Double.parseDouble(data[5]);
+                double educationAllowance = Double.parseDouble(data[6]);
 
+                employees[index++] = new Employee(
+                        ID, name, hoursWorked, hourlyRate,
+                        deductionProvince, deductionFederal, educationAllowance
+                );
+            }
+
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found: " + e.getMessage()); // Prints an error message if the file is not found.
+            return; // Exit the program if the file is not found.
+        }
+
+        System.out.println("Loaded " + index + " employees"); // Prints the number of employees loaded into the array.
+        
+		// call selection sort
+        long sStart = System.currentTimeMillis();
+        SelectionSort.selectionSort(employees);
+        long sEnd = System.currentTimeMillis();
+
+        System.out.println("SelectionSort time: " + (sEnd - sStart) + " ms");
+        
+        // call quicksort
+        long qStart = System.currentTimeMillis();
+        QuickSort.sort(employees);
+        long qEnd = System.currentTimeMillis();
+
+        System.out.println("QuickSort time: " + (qEnd - qStart) + " ms");
+
+        // Print first few to verify
+        for (int i = 0; i < Math.min(index, 10); i++) {
+            System.out.println(employees[i]);
+        }
     }
-    
-    // Extremely unhappy with this atm, will fix this later.
-    Employee[] employees = new Employee[1000];
-    int employeeCount = 0;
-    while (scanner.hasNextLine()) {
-        String line = scanner.nextLine();
-        String[] parts = line.split(">");
-
-        int id = Integer.parseInt(parts[0]);
-        String name = parts[1];
-        double hours = Double.parseDouble(parts[2]);
-
-        //employees[count] = e;
-        //count++;
-
-    }
-    JOptionPane.showInputDialog(null, "Enter the name of the employee to search");
-    }
-
-}
 }
