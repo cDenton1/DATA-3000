@@ -79,6 +79,7 @@ public class Main {
         
         // call quicksort
         long qStart = System.currentTimeMillis();
+		QuickSort.sort(employees);
         long qEnd = System.currentTimeMillis();
 
         System.out.println("------------------------------------------------------");
@@ -120,4 +121,5 @@ public class Main {
     }
     
         
+
 
