@@ -16,11 +16,10 @@ public class SelectionSort {
                 }
             }
 
-            // Swapping the variable with the larger number in the index
+            // This is basically swapping the smaller number with the other larger number that was being compared to it.
             T temp = array[i];
             array[i] = array[min];
-            array[min] = temp;   
+            array[min] = temp;
         }
-
     }
 }

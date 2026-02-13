@@ -31,10 +31,10 @@ public class Employee implements Comparable<Employee> {
 		return gross - deductions + educationAllowance;
 	}
 
-	// Used by SelectionSort (salary-based)
+	// Used by QuickSort (name-based)
 	@Override
 	public int compareTo(Employee other) {
-		return Double.compare(this.calcHourlySalary(), other.calcHourlySalary());
+		return this.name.compareToIgnoreCase(other.name);
 	}
 
 	@Override
