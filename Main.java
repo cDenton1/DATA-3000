@@ -2,6 +2,7 @@
 import java.io.File;
 import java.util.Scanner;
 import javax.swing.JOptionPane;
+import java.util.Comparator;
 
 public class Main {
 
@@ -44,7 +45,11 @@ public class Main {
 
 		// call selection sort
 		long sStart = System.currentTimeMillis();
-		SelectionSort.selectionSort(employees);
+		SelectionSort.selectionSort(employees, new Comparator<Employee>() {
+			public int compare(Employee e1, Employee e2) {
+				return Double.compare(e1.calcHourlySalary(), e2.calcHourlySalary());
+			}
+		});
 		long sEnd = System.currentTimeMillis();
 
 		System.out.println("\nThe performance of our sorting algorithms");
