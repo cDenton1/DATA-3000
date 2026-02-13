@@ -1,6 +1,6 @@
 public class Employee implements Comparable<Employee> {
 	
-	//Variable declaration
+	// Variable declaration
     int ID;
     String name;
     double hoursWorked;
@@ -9,7 +9,7 @@ public class Employee implements Comparable<Employee> {
     double deductionFederal;
     double educationAllowance;
 
-	//Employee object
+	// Employee object
 	public Employee(int ID, String name, double hoursWorked, double hourlyRate, double deductionProvince, double deductionFederal, double educationAllowance) {
 		this.ID = ID;
 		this.name = name;
@@ -42,3 +42,4 @@ public class Employee implements Comparable<Employee> {
 		return ID + "," + name + "," + hoursWorked + "," + hourlyRate + "," + deductionProvince + "," + deductionFederal + "," + educationAllowance;
 	}
 }
+
