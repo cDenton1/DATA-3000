@@ -1,34 +1,44 @@
-/*
-This code is basically just the employee class but me attempting to make an calcHourlySalary() method according to
-the instructions we have. It will be merged with the main employee class when we're able to do that.
-For now, this code will be pushed in order to keep tabs on progress.
-*/
+public class Employee implements Comparable<Employee> {
+	
+	//Variable declaration
+    int ID;
+    String name;
+    double hoursWorked;
+    double hourlyRate;
+    double deductionProvince;
+    double deductionFederal;
+    double educationAllowance;
 
-public class Employee {
+	//Employee object
+	public Employee(int ID, String name, double hoursWorked, double hourlyRate, double deductionProvince, double deductionFederal, double educationAllowance) {
+		this.ID = ID;
+		this.name = name;
+		this.hoursWorked = hoursWorked;
+		this.hourlyRate = hourlyRate;
+		this.deductionProvince = deductionProvince;
+		this.deductionFederal = deductionFederal;
+		this.educationAllowance = educationAllowance;
+	}
 
-    public double calcHourlySalary() {
-        double educationAllowance;
-        double grossPay = hoursWorked * hourlyRate;
-        double deductionAmount = grossPay * (deductionProvince + deductionFederal);
-        return grossPay - deductionAmount + educationAllowance;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public static void main(String[] args) {
-        /* All the variables needed in order to calculate the salary of each employee.
-        The variables are being declared just to show that it's working and will be modified
-        in order for it to apply to all employees. The numbers come from the "John Smith" example.
-        */
-       /*
-        double hoursWorked = 40;
-        double hourlyRate = 15.50;
-        double deductionProvince = 0.05;
-        double deductionFederal = 0.1;
-        double educationAllowance = 1000;
+	// Step 2 requirement
+	public double calcHourlySalary() {
+		double gross = hoursWorked * hourlyRate;
+		double deductions = gross * (deductionProvince + deductionFederal);
+		return gross - deductions + educationAllowance;
+	}
 
+	// Used by QuickSort (name-based)
+	@Override
+	public int compareTo(Employee other) {
+		return this.name.compareToIgnoreCase(other.name);
+	}
 
-        System.out.printf("%.2f%n", netPay);
-         */
-       }
-
-    }
-
+	@Override
+	public String toString() {
+		return ID + "," + name + "," + hoursWorked + "," + hourlyRate + "," + deductionProvince + "," + deductionFederal + "," + educationAllowance;
+	}
+}
