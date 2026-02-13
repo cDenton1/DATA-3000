@@ -42,7 +42,7 @@ public class Main {
 		
 		System.out.println("Loaded " + index + " employees"); // Prints the number of employees loaded into the array.
 
-		// call selection sort
+		// Call selection sort
 		long sStart = System.currentTimeMillis();
 		SelectionSort.selectionSort(employees, new Comparator<Employee>() {
 			public int compare(Employee e1, Employee e2) {
@@ -102,4 +102,5 @@ public class Main {
 		}
 	}
 }
+
 
