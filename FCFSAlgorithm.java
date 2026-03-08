@@ -8,8 +8,8 @@ public class FCFSAlgorithm {
         It's assumed the other classes will handle the variables. */
 
         int numberOfProcesses;
-        int arrivalTimes[];
-        int burstTimes[];
+        int arrivalTimes;
+        int burstTimes;
         int turnaroundTime;
         int waitingTime;
         int averageTurnaroundTime;
@@ -23,11 +23,11 @@ public class FCFSAlgorithm {
         for (int i = 0; i <= numberOfProcesses; i++) {
 
             // Inputting the numbers
-            System.out.print("\nEnter arrival time for process " + "P" + (i+1) + ": ");
-            arrivalTimes[i] = input.nextInt();
+            System.out.print("\nEnter arrival time for process " + "P" + (i) + ": ");
+            arrivalTimes = input.nextInt();
             
-            System.out.print("Enter burst time for process " + "P" + (i+1) + ": ");
-            burstTimes[i] = input.nextInt();
+            System.out.print("Enter burst time for process " + "P" + (i) + ": ");
+            burstTimes = input.nextInt();
         }
 
         // Actual calculations
