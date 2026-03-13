@@ -1,10 +1,18 @@
-
+/**
+ * Represents a process in execution
+ */
 public class Process implements Comparable<Process> {
 
     // Attributes
     private int processID;
     private int arrivalTime;
     private int burstTime;
+
+    /**
+     * @param processID The unique identifier for the process
+     * @param arrivalTime The time at which the process arrives
+     * @param burstTime The amount of CPU time the process needs to complete
+     */
 
     // Constructor
     public Process(int processID, int arrivalTime, int burstTime) {
@@ -44,14 +52,21 @@ public class Process implements Comparable<Process> {
         return "Process ID: " + processID + " | Arrival Time: " + arrivalTime + " | Burst Time: " + burstTime;
     }
 
+    /**
+     * Compares processes by arrival Time, if equal, it compares by process ID
+     */
+
     // compareTo() to compare the arrival times
     public int compareTo(Process other) {
         int comparison = Integer.compare(this.arrivalTime, other.arrivalTime);
-        if (comparison != 0) { // If the arrival time isn't the same
+
+        // If the arrival times are different, return the comparison result
+        if (comparison != 0) {
             return comparison;
         }
         else { 
-            return Integer.compare(this.processID, other.processID); // If the arrival times match, compare the process IDs instead.
+            // If the arrival times match, compare the process ID instead
+            return Integer.compare(this.processID, other.processID); 
         }
         
     }
