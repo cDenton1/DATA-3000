@@ -1,6 +1,19 @@
+import javax.swing.JOptionPane;
+
 public class PostfixMain {
   public static void main(String[] args) {
-    // still need jOption pane
+    
+    JOptionPane.showMessageDialog(null, "A text-based calaculator that can evaluate arthmetic expressions"
+    + "\nin postfix notation using a stack data structure and handle variables" + 
+    "\nusing a binary search tree (BST).\nYou will design and implement an array-based stack, and then develop and" +
+    "\nimplement a provided algorithm to evaulate postfix expressions, handle integer\noperands and basic arithmetic operations," +
+    "integrate a binary search\ntree to store variables and their values, visually display the binary search" +
+    "\ntree, and handle deletion of all variables.\nThe correctness of your implementation can be verfied by following the" + 
+    "\nprovided postfix expressions as test cases in the sample runs.\nPress OK to Start", "Welcome to", JOptionPane.INFORMATION_MESSAGE);
+
+    // bare with me i am creating this file directly in github lol
+    // very rough idea and will clean up once i have access to an actual code editor
+
     PostfixCalculator calc = new PostfixCalculator();
 
     //  First expression
@@ -45,14 +58,14 @@ public class PostfixMain {
 
     // Fifth expression
     // WE NEED TO IMPLEMENT the NUMBER 4
-    // String expression5 = "d e f * + 4 +";
-    // calc.setVariable("d", 2); 
-    // calc.setVariable("e", 3); 
-    // calc.setVariable("f", 4);
-    // result = calc.evaluatePostfixExpression(expression5);
+    String expression5 = "d e f * + 4 +";
+    calc.setVariable("d", 1); 
+    calc.setVariable("e", 2); 
+    calc.setVariable("f", 3);
+    result = calc.evaluatePostfixExpression(expression5);
 
-    // System.out.println("Result: " + result);
-    // calc.deleteAllVariables();
+    System.out.println("Result: " + result);
+    calc.deleteAllVariables();
     
     // Sixth expression
     String expression6 = "g h i + * j /";
