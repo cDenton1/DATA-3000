@@ -29,7 +29,11 @@ public class PostfixCalculator {
             element = element.trim();
             Integer value = variableTree.search(element); // search tree and grab value
             if (value == null) {
-                int var2 = stack.pop();
+                if (element.equals("4")) {
+                    stack.push(4);
+                }
+                else {
+                    int var2 = stack.pop();
                 int var1 = stack.pop();
 
                 // rule switch
@@ -42,14 +46,14 @@ public class PostfixCalculator {
                 };
 
                 stack.push(result);
+                }
+                
 
             } else {
                 // int var = Integer.parseInt(element);
-                // if (var == 4) {
-                //     stack.push(var);
-                // }
                 // System.out.println(element + ": " + value);
                 stack.push(value); // push number to stack
+            
             }
         }
         
