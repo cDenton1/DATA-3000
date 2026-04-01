@@ -1,8 +1,6 @@
 public class PostfixMain {
   public static void main(String[] args) {
-    // bare with me i am creating this file directly in github lol
-    // very rough idea and will clean up once i have access to an actual code editor
-
+    // still need jOption pane
     PostfixCalculator calc = new PostfixCalculator();
 
     //  First expression
