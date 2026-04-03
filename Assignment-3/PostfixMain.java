@@ -3,28 +3,27 @@ import javax.swing.JOptionPane;
 public class PostfixMain {
   public static void main(String[] args) {
     
-    JOptionPane.showMessageDialog(null, "A text-based calaculator that can evaluate arthmetic expressions"
-    + "\nin postfix notation using a stack data structure and handle variables" + 
+    JOptionPane.showMessageDialog(null, "A text-based calaculator that can evaluate arthmetic expressions" +
+    "\nin postfix notation using a stack data structure and handle variables" + 
     "\nusing a binary search tree (BST).\nYou will design and implement an array-based stack, and then develop and" +
     "\nimplement a provided algorithm to evaulate postfix expressions, handle integer\noperands and basic arithmetic operations," +
     "integrate a binary search\ntree to store variables and their values, visually display the binary search" +
     "\ntree, and handle deletion of all variables.\nThe correctness of your implementation can be verfied by following the" + 
     "\nprovided postfix expressions as test cases in the sample runs.\nPress OK to Start", "Welcome to", JOptionPane.INFORMATION_MESSAGE);
 
-    // bare with me i am creating this file directly in github lol
-    // very rough idea and will clean up once i have access to an actual code editor
-
     PostfixCalculator calc = new PostfixCalculator();
 
-    //  First expression
-    String expression1 = "x y * z +";
-    calc.setVariable("x", 5); 
+    // First expression
+    String expression1 = "x y * z +";   // initialize postfix expression
+    calc.setVariable("x", 5);           // set value of variable
     calc.setVariable("y", 3); 
     calc.setVariable("z", 4); 
-    int result = calc.evaluatePostfixExpression(expression1);
+    int result = calc.evaluatePostfixExpression(expression1); // calculate and store result
     
-    System.out.println("Result: " + result);
-    calc.deleteAllVariables();
+    System.out.println("Result: " + result);    // print result
+    calc.deleteAllVariables();                  // clear all variables
+    
+    // repeat for the other expressions
 
     // Second expression
     String expression2 = "a b + c *";
@@ -57,7 +56,6 @@ public class PostfixMain {
     calc.deleteAllVariables();
 
     // Fifth expression
-    // WE NEED TO IMPLEMENT the NUMBER 4
     String expression5 = "d e f * + 4 +";
     calc.setVariable("d", 1); 
     calc.setVariable("e", 2); 
